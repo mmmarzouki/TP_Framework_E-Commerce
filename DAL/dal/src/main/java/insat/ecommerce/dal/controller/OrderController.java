@@ -3,7 +3,7 @@ package insat.ecommerce.dal.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ClientController {
+public class OrderController {
 
     
 }
