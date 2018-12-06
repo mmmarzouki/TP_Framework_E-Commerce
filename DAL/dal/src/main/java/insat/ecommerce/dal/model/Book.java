@@ -25,13 +25,13 @@ public class Book {
     @Column
     private String author;
 
-    @ManyToMany(mappedBy="books")
+    @ManyToMany(mappedBy="book")
     private ArrayList<Promotion> promotions;
 
-    @ManyToMany(mappedBy="books")
+    @ManyToMany(mappedBy="book")
     private ArrayList<OrderBook> orderBooks;
 
-    @ManyToMany(mappedBy="books")
+    @ManyToMany(mappedBy="book")
     private ArrayList<CartBook> cartBooks;
 
     public Book(int id, String name, int availableQuantity, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderBooks) {

@@ -19,7 +19,7 @@ public class Cart {
     @OneToOne(mappedBy="cart")
     private Client client;
 
-    @ManyToMany(mappedBy="carts")
+    @ManyToMany(mappedBy="cart")
     private ArrayList<CartBook> Cartbooks;
     
 }
