@@ -24,33 +24,38 @@ public class BookController {
     //methods
 
     //find all
-    @RequestMapping(value="/books", method=RequestMethod.GET)
+    @RequestMapping(value="/book", method=RequestMethod.GET)
     public List<Book> findAll() {
         return (List<Book>) bookRepository.findAll();
     }
     
     //find one
-    @RequestMapping(value="/books/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/book/{id}", method=RequestMethod.GET)
     public Book findOne(@PathVariable int id) {
         return bookRepository.findById(id).get();
     }
     
     //create
-    @RequestMapping(value="/books",method=RequestMethod.POST)
-    public void create(@RequestBody Book book){
+    @RequestMapping(value="/book",method=RequestMethod.POST)
+    public String create(@RequestBody Book book){
         bookRepository.save(book);
+        
+        return "{\"code\":200}";
     }
     
     //update
-    @RequestMapping(value="/books",method=RequestMethod.PUT)
-    public void update(@RequestBody Book book){
+    @RequestMapping(value="/book",method=RequestMethod.PUT)
+    public Book update(@RequestBody Book book){
         bookRepository.save(book);
+        return book;
     }
 
     //delete
-    @RequestMapping(value="/books/{id}",method=RequestMethod.DELETE)
-    public void delete(@PathVariable int id){
+    @RequestMapping(value="/book/{id}",method=RequestMethod.DELETE)
+    public String delete(@PathVariable int id){
         bookRepository.deleteById(id);
+        
+        return "{\"code\":200}";
     }
 
 }
