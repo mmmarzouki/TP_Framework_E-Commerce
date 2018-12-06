@@ -28,16 +28,19 @@ public class Book {
     @ManyToMany(mappedBy="books")
     private ArrayList<Promotion> promotions;
 
+    @ManyToMany(mappedBy="books")
+    private ArrayList<OrderBook> orderBooks;
 
-    private ArrayList<OrderBook> orderbooks;
+    @ManyToMany(mappedBy="books")
+    private ArrayList<CartBook> cartBooks;
 
-    public Book(int id, String name, int availableQuantity, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderbooks) {
+    public Book(int id, String name, int availableQuantity, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderBooks) {
         this.id = id;
         this.name = name;
         this.availableQuantity = availableQuantity;
         this.author = author;
         this.promotions = promotions;
-        this.orderbooks = orderbooks;
+        this.orderBooks = orderBooks;
     }
 
 
@@ -85,12 +88,12 @@ public class Book {
         this.promotions = promotions;
     }
 
-    public ArrayList<OrderBook> getOrderbooks() {
-        return this.orderbooks;
+    public ArrayList<OrderBook> getorderBooks() {
+        return this.orderBooks;
     }
 
-    public void setOrderbooks(ArrayList<OrderBook> orderbooks) {
-        this.orderbooks = orderbooks;
+    public void setorderBooks(ArrayList<OrderBook> orderBooks) {
+        this.orderBooks = orderBooks;
     }
 
 
