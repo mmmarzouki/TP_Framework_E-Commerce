@@ -20,6 +20,9 @@ public class Book {
     private String name;
 
     @Column
+    private int availableQuantity;
+
+    @Column
     private String author;
 
     @ManyToMany(mappedBy="books")
@@ -28,9 +31,10 @@ public class Book {
 
     private ArrayList<OrderBook> orderbooks;
 
-    public Book(int id, String name, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderbooks) {
+    public Book(int id, String name, int availableQuantity, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderbooks) {
         this.id = id;
         this.name = name;
+        this.availableQuantity = availableQuantity;
         this.author = author;
         this.promotions = promotions;
         this.orderbooks = orderbooks;
@@ -55,6 +59,14 @@ public class Book {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAvailableQuantity() {
+        return this.availableQuantity;
+    }
+
+    public void setAvailableQuantity(int availableQuantity) {
+        this.availableQuantity = availableQuantity;
     }
 
     public String getAuthor() {
