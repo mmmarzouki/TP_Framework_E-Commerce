@@ -20,6 +20,6 @@ public class Cart {
     private Client client;
 
     @ManyToMany(mappedBy="cart")
-    private ArrayList<CartBook> Cartbooks;
+    private ArrayList<CartBook> cartBooks;
     
 }
