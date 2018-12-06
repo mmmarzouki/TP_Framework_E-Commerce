@@ -1,6 +1,6 @@
 package insat.ecommerce.dal.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity(name="orders")
 public class Order {
@@ -17,11 +17,11 @@ public class Order {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
-    private Client client;
-
     @ManyToMany
-    private ArrayList<OrderBook> orderBooks;
+    private List<Client> clients;
+
+    @OneToMany(mappedBy="order")
+    private List<OrderBook> orderBooks;
 
     @Column
     private String date;
@@ -29,9 +29,9 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, Client client, ArrayList<OrderBook> orderBooks, String date) {
+    public Order(int id, List<Client> clients, List<OrderBook> orderBooks, String date) {
         this.id = id;
-        this.client = client;
+        this.clients = clients;
         this.orderBooks = orderBooks;
         this.date = date;
     }
@@ -44,19 +44,19 @@ public class Order {
         this.id = id;
     }
 
-    public Client getClient() {
-        return this.client;
+    public List<Client> getClients() {
+        return this.clients;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClients(List<Client> clients) {
+        this.clients = clients;
     }
 
-    public ArrayList<OrderBook> getOrderBooks() {
+    public List<OrderBook> getOrderBooks() {
         return this.orderBooks;
     }
 
-    public void setOrderBooks(ArrayList<OrderBook> orderBooks) {
+    public void setOrderBooks(List<OrderBook> orderBooks) {
         this.orderBooks = orderBooks;
     }
 

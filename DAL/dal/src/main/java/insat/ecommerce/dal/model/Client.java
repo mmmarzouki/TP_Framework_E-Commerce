@@ -1,13 +1,13 @@
 package insat.ecommerce.dal.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity(name="clients")
@@ -35,8 +35,8 @@ public class Client {
     @OneToOne(mappedBy="client")
     private Cart cart;
 
-    @OneToMany(mappedBy="clients")
-    private ArrayList<Order> orders;
+    @ManyToMany(mappedBy="clients")
+    private List<Order> orders;
 
     public Client() {
     }
@@ -107,11 +107,11 @@ public class Client {
         this.cart = cart;
     }
 
-    public ArrayList<Order> getOrders() {
+    public List<Order> getOrders() {
         return this.orders;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 

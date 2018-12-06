@@ -1,6 +1,6 @@
 package insat.ecommerce.dal.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,13 +26,13 @@ public class Promotion {
     private float amount;
 
     @ManyToMany
-    private ArrayList<Book> books;
+    private List<Book> books;
 
     public Promotion() {
     }
 
 
-    public Promotion(int id, String beginDate, String endingDate, float amount, ArrayList<Book> books) {
+    public Promotion(int id, String beginDate, String endingDate, float amount, List<Book> books) {
         this.id = id;
         this.beginDate = beginDate;
         this.endingDate = endingDate;
@@ -72,11 +72,11 @@ public class Promotion {
         this.amount = amount;
     }
 
-    public ArrayList<Book> getBooks() {
+    public List<Book> getBooks() {
         return this.books;
     }
 
-    public void setBooks(ArrayList<Book> books) {
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
 

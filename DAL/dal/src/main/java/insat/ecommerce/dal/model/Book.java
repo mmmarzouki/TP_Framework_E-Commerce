@@ -1,6 +1,6 @@
 package insat.ecommerce.dal.model;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity(name="books")
 public class Book {
@@ -25,16 +26,16 @@ public class Book {
     @Column
     private String author;
 
-    @ManyToMany(mappedBy="book")
-    private ArrayList<Promotion> promotions;
+    @ManyToMany(mappedBy="books")
+    private List<Promotion> promotions;
 
-    @ManyToMany
-    private ArrayList<OrderBook> orderBooks;
+    @OneToMany(mappedBy="book")
+    private List<OrderBook> orderBooks;
 
-    @ManyToMany
-    private ArrayList<CartBook> cartBooks;
+    @OneToMany(mappedBy="book")
+    private List<CartBook> cartBooks;
 
-    public Book(int id, String name, int availableQuantity, String author, ArrayList<Promotion> promotions, ArrayList<OrderBook> orderBooks) {
+    public Book(int id, String name, int availableQuantity, String author, List<Promotion> promotions, List<OrderBook> orderBooks) {
         this.id = id;
         this.name = name;
         this.availableQuantity = availableQuantity;
@@ -80,19 +81,19 @@ public class Book {
         this.author = author;
     }
 
-    public ArrayList<Promotion> getPromotions() {
+    public List<Promotion> getPromotions() {
         return this.promotions;
     }
 
-    public void setPromotions(ArrayList<Promotion> promotions) {
+    public void setPromotions(List<Promotion> promotions) {
         this.promotions = promotions;
     }
 
-    public ArrayList<OrderBook> getorderBooks() {
+    public List<OrderBook> getorderBooks() {
         return this.orderBooks;
     }
 
-    public void setorderBooks(ArrayList<OrderBook> orderBooks) {
+    public void setorderBooks(List<OrderBook> orderBooks) {
         this.orderBooks = orderBooks;
     }
 

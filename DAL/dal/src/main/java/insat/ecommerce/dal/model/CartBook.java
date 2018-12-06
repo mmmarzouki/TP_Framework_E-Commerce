@@ -1,10 +1,11 @@
 package insat.ecommerce.dal.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity(name="cartBooks")
@@ -14,11 +15,14 @@ public class CartBook {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
-    @ManyToMany(mappedBy="cartBooks")
+    @ManyToOne
     private Cart cart;
 
-    @ManyToMany(mappedBy="cartBooks")
+    @ManyToOne
     private Book book;
+
+    @Column
+    private int number;
 
     public CartBook() {
     }
@@ -29,7 +33,6 @@ public class CartBook {
         this.book = book;
         this.number = number;
     }
-    private int number;
 
     public int getId() {
         return this.id;
